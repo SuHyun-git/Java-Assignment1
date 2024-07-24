@@ -6,8 +6,7 @@ public class App {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        //int[] results = new int[10];
-        int count = 0;
+        Calculator calculator = new Calculator();
         List<Integer> results = new ArrayList<>();
 
         while (true) {
@@ -21,23 +20,12 @@ public class App {
             System.out.print("사칙연산 기호를 입력하세요: ");
             String sign = scanner.nextLine();
 
-            int result = 0;
-            if (sign.equals("+")) {
-                result = num1 + num2;
-            } else if (sign.equals("-")) {
-                result = num1 - num2;
-            } else if (sign.equals("*")) {
-                result = num1 * num2;
-            } else if (sign.equals("/")) {
-                if (num2 == 0) {
-                    System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                    continue;
-                } else {
-                    result = num1 / num2;
-                }
-            } else {
-                System.out.println("정확한 기호를 입력해주세요.");
+            int result = calculator.calculate(num1, num2, sign);
+            // 오류가 나오면 -1을 반환한다. -> result에 -1이 들어오면 처음부터 입력을 다시 받는다.
+            if (result == -1) {
+                continue;
             }
+
             System.out.println("결과: " + result);
 
             results.add(result);
@@ -59,4 +47,6 @@ public class App {
             }
         }
     }
+
+
 }
