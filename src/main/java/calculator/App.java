@@ -35,6 +35,8 @@ public class App {
                 } else {
                     result = num1 / num2;
                 }
+            } else {
+                System.out.println("정확한 기호를 입력해주세요.");
             }
             System.out.println("결과: " + result);
 
