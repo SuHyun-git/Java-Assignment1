@@ -27,4 +27,8 @@ public class Calculator {
         return result;
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4523df01ba5782b226864ba834ec40220f1d69cd
