@@ -44,14 +44,16 @@ public class App {
                 results.remove(0);
             }
 
-            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료), 1 입력시 저장 목록 보기");
-            String s = scanner.nextLine();
-            if (s.equals("exit")) {
-                break;
-            } else if (s.equals("1")) {
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            if (scanner.nextLine().equals("inquiry")) {
                 for (int i : results) {
                     System.out.println(i);
                 }
+            }
+
+            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
+            if (scanner.nextLine().equals("exit")) {
+                break;
             }
         }
     }
