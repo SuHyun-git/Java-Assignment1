@@ -47,7 +47,7 @@ public class App {
             }
 
 
-            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료), 1입력시 저장 목록 보기");
+            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료), 1 입력시 저장 목록 보기");
             String s = scanner.nextLine();
             if (s.equals("exit")) {
                 break;
