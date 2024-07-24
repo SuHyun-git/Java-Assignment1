@@ -1,13 +1,14 @@
 package calculator;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class App {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int[] results = new int[10];
+        //int[] results = new int[10];
         int count = 0;
+        List<Integer> results = new ArrayList<>();
 
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -37,15 +38,11 @@ public class App {
             }
             System.out.println("결과: " + result);
 
-            if (count < 9) {
-                results[count] = result;
-                count++;
-            } else if (count == 9) {
-                results[count] = result;
-                System.out.println("다음부터는 가장 오래된 숫자가 삭제됩니다.");
-                count = 0;
+            results.add(result);
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            if (scanner.nextLine().equals("remove")) {
+                results.remove(0);
             }
-
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료), 1 입력시 저장 목록 보기");
             String s = scanner.nextLine();
