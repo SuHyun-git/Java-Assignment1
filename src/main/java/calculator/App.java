@@ -42,7 +42,7 @@ public class App {
                 count++;
             } else if (count == 9) {
                 results[count] = result;
-                System.out.println("다음수 부터는 가장 오래된 숫자가 삭제됩니다.");
+                System.out.println("다음부터는 가장 오래된 숫자가 삭제됩니다.");
                 count = 0;
             }
 
