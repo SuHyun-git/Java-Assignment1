@@ -7,7 +7,6 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
-        List<Integer> results = new ArrayList<>();
 
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -19,6 +18,7 @@ public class App {
 
             System.out.print("사칙연산 기호를 입력하세요: ");
             char operator = scanner.next().charAt(0);
+            scanner.nextLine();
 
             calculator.setNum1(num1);
             calculator.setNum2(num2);
@@ -31,18 +31,14 @@ public class App {
 
             System.out.println("결과: " + result);
 
-            results.add(result);
-            calculator.removeResult(results);
+            calculator.getResults().add(result);
+            calculator.removeResult(calculator.getResults());
+            calculator.inquiryResults(calculator.getResults());
 
-            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
-            if (scanner.nextLine().equals("inquiry")) {
-                for (int i : results) {
-                    System.out.println(i);
-                }
-            }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             if (scanner.nextLine().equals("exit")) {
+                System.out.println("프로그램을 종료하였습니다.");
                 break;
             }
         }
