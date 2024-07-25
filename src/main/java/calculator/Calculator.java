@@ -8,9 +8,15 @@ public class Calculator {
     private int num1;
     private int num2;
     private List<Integer> results;
+    private List<Double> circleResults;
+
+    // PI 같은 경우는 값을 변경하기 못하도록 final을 사용하였다.
+    // final static의 의미는 상수라는 뜻으로 PI에 사용하였다.
+    final static double PI = 3.14;
 
     public Calculator() {
         results = new ArrayList<>();
+        circleResults = new ArrayList<>();
     }
 
     public void setNum1(int num1) {
@@ -21,6 +27,13 @@ public class Calculator {
         this.num2 = num2;
     }
 
+    public void setResults(List<Integer> results) {
+        this.results = results;
+    }
+
+    public void setCircleResults(List<Double> circleResults) {
+        this.circleResults = circleResults;
+    }
 
     public int getNum1() {
         return num1;
@@ -28,6 +41,10 @@ public class Calculator {
 
     public int getNum2() {
         return num2;
+    }
+
+    public List<Double> getCircleResults() {
+        return circleResults;
     }
 
     public List<Integer> getResults() {
@@ -72,6 +89,20 @@ public class Calculator {
         System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
         if (scanner.nextLine().equals("inquiry")) {
             for (int i : results) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    public double calculateCircleArea(double radius) {
+        return radius * radius * PI;
+    }
+
+    public void circleInquiryResults(List<Double> circleResults) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+        if (scanner.nextLine().equals("inquiry")) {
+            for (double i : circleResults) {
                 System.out.println(i);
             }
         }
