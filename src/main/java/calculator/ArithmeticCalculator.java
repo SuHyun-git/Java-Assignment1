@@ -42,20 +42,15 @@ public class ArithmeticCalculator extends Calculator{
     public int calculate(int num1, int num2, char operator) {
         int result = 0;
 
+
         if (operator == '+') {
-            result = num1 + num2;
+            result = AddOperator.operate(num1, num2);
         } else if (operator == '-') {
-            result = num1 - num2;
+            result = SubtractOperator.operate(num1, num2);
         } else if (operator == '*') {
-            result = num1 * num2;
+            result =MultiplyOperator.operate(num1, num2);
         } else if (operator == '/') {
-            try {
-                result = num1 / num2;
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                return -1;
-            }
+            result = DivideOperator.operate(num1, num2);
         } else {
             System.out.println("정확한 기호를 입력해주세요.");
             return -1;
