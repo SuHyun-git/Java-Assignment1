@@ -18,9 +18,12 @@ public class App {
             scanner.nextLine();
 
             System.out.print("사칙연산 기호를 입력하세요: ");
-            String sign = scanner.nextLine();
+            char operator = scanner.next().charAt(0);
 
-            int result = calculator.calculate(num1, num2, sign);
+            calculator.setNum1(num1);
+            calculator.setNum2(num2);
+
+            int result = calculator.calculate(num1, num2, operator);
             // 오류가 나오면 -1을 반환한다. -> result에 -1이 들어오면 처음부터 입력을 다시 받는다.
             if (result == -1) {
                 continue;
@@ -29,10 +32,7 @@ public class App {
             System.out.println("결과: " + result);
 
             results.add(result);
-            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-            if (scanner.nextLine().equals("remove")) {
-                results.remove(0);
-            }
+            calculator.removeResult(results);
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             if (scanner.nextLine().equals("inquiry")) {
