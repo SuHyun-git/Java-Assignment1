@@ -41,17 +41,20 @@ public class ArithmeticCalculator extends Calculator{
 
     public int calculate(int num1, int num2, char operator) {
         int result = 0;
+        AllOperator[] modOperator = new AllOperator[] {new AddOperator(),new SubtractOperator(),new MultiplyOperator(), new DivideOperator(), new ModOperator()};
 
 
         if (operator == '+') {
-            result = AddOperator.operate(num1, num2);
+            result = modOperator[0].operate(num1, num2);
         } else if (operator == '-') {
-            result = SubtractOperator.operate(num1, num2);
+            result = modOperator[1].operate(num1, num2);
         } else if (operator == '*') {
-            result =MultiplyOperator.operate(num1, num2);
+            result =modOperator[2].operate(num1, num2);
         } else if (operator == '/') {
-            result = DivideOperator.operate(num1, num2);
-        } else {
+            result = modOperator[3].operate(num1, num2);
+        } else if (operator == '%') {
+        result = modOperator[4].operate(num1, num2);
+        }else {
             System.out.println("정확한 기호를 입력해주세요.");
             return -1;
         }
@@ -59,20 +62,8 @@ public class ArithmeticCalculator extends Calculator{
         return result;
     }
 
-
-
     @Override
-    public void inquiryResults(List results) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
-        if (scanner.nextLine().equals("inquiry")) {
-            for (int i : (List<Integer>)results) {
-                System.out.println(i);
-            }
-        }
-    }
-
-    public void removeResult(List<Integer> results) {
+    public void removeResult(List results) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
         if (scanner.nextLine().equals("remove")) {
@@ -80,6 +71,14 @@ public class ArithmeticCalculator extends Calculator{
         }
     }
 
-
-
+    @Override
+    public void inquiryResults(List results) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+        if (scanner.nextLine().equals("inquiry")) {
+            for (Object i : results) {
+                System.out.println(i);
+            }
+        }
+    }
 }

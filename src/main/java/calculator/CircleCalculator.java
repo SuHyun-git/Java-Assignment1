@@ -10,7 +10,6 @@ public class CircleCalculator extends Calculator{
     final static double PI = 3.14;
     private List<Double> circleResults;
 
-
     public CircleCalculator() {
         this.circleResults = new ArrayList<>();
     }
@@ -24,21 +23,27 @@ public class CircleCalculator extends Calculator{
         this.circleResults = circleResults;
     }
 
+    public double calculateCircleArea(double radius) {
+        return radius * radius * PI;
+    }
+
     @Override
     public void inquiryResults(List results) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
         if (scanner.nextLine().equals("inquiry")) {
-            for (double i : (List<Double>)results) {
+            for (Object i : results) {
                 System.out.println(i);
             }
         }
     }
 
-
-
-    public double calculateCircleArea(double radius) {
-        return radius * radius * PI;
+    @Override
+    public void removeResult(List results) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+        if (scanner.nextLine().equals("remove")) {
+            results.remove(0);
+        }
     }
-
 }

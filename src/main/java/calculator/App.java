@@ -6,6 +6,8 @@ public class App {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ArithmeticCalculator calculator = new ArithmeticCalculator();
+        CircleCalculator circleCalculator = new CircleCalculator();
 
 
         while (true) {
@@ -13,7 +15,7 @@ public class App {
             int menu = scanner.nextInt();
             scanner.nextLine();
             if (menu == 1) {
-                ArithmeticCalculator calculator = new ArithmeticCalculator();
+
 
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 int num1 = scanner.nextInt();
@@ -48,12 +50,13 @@ public class App {
                     break;
                 }
             } else if(menu == 2) {
-                CircleCalculator circleCalculator = new CircleCalculator();
+
                 System.out.print("원의 반지름을 입력하세요: ");
                 double circle = circleCalculator.calculateCircleArea(scanner.nextDouble());
                 scanner.nextLine();
                 System.out.println("원의 넓이는 " + circle);
                 circleCalculator.getCircleResults().add(circle);
+                circleCalculator.removeResult(circleCalculator.getCircleResults());
                 circleCalculator.inquiryResults(circleCalculator.getCircleResults());
 
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
