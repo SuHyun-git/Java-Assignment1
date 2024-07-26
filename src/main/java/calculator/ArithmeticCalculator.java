@@ -4,43 +4,66 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ArithmeticCalculator extends Calculator{
-    private int num1;
-    private int num2;
+public class ArithmeticCalculator<T> extends Calculator{
+    private T num1;
+    private T num2;
 
 
-    private List<Integer> results;
+    private List<T> results;
 
     public ArithmeticCalculator() {
         this.results = new ArrayList<>();
     }
 
-    public void setNum1(int num1) {
+    public void setNum1(T num1) {
         this.num1 = num1;
     }
 
-    public void setNum2(int num2) {
+    public void setNum2(T num2) {
         this.num2 = num2;
     }
 
-    public void setResults(List<Integer> results) {
+    public void setResults(List<T> results) {
         this.results = results;
     }
 
-    public int getNum1() {
+    public T getNum1() {
         return num1;
     }
 
-    public int getNum2() {
+    public T getNum2() {
         return num2;
     }
 
-    public List<Integer> getResults() {
+    public List<T> getResults() {
         return results;
     }
 
     public int calculate(int num1, int num2, char operator) {
         int result = 0;
+        AllOperator[] modOperator = new AllOperator[] {new AddOperator(),new SubtractOperator(),new MultiplyOperator(), new DivideOperator(), new ModOperator()};
+
+
+        if (operator == OperatorType .ADD.label()) {
+            result = modOperator[0].operate(num1, num2);
+        } else if (operator == OperatorType .SUB.label()) {
+            result = modOperator[1].operate(num1, num2);
+        } else if (operator == OperatorType .MUL.label()) {
+            result =modOperator[2].operate(num1, num2);
+        } else if (operator == OperatorType .DIV.label()) {
+            result = modOperator[3].operate(num1, num2);
+        } else if (operator == OperatorType .MOD.label()) {
+            result = modOperator[4].operate(num1, num2);
+        }else {
+            System.out.println("정확한 기호를 입력해주세요.");
+            return -1;
+        }
+
+        return result;
+    }
+
+    public double calculate(double num1, double num2, char operator) {
+        double result = 0;
         AllOperator[] modOperator = new AllOperator[] {new AddOperator(),new SubtractOperator(),new MultiplyOperator(), new DivideOperator(), new ModOperator()};
 
 

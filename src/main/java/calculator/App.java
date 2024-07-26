@@ -6,7 +6,7 @@ public class App {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArithmeticCalculator calculator = new ArithmeticCalculator();
+        ArithmeticCalculator<Integer> calculator = new ArithmeticCalculator<>();
         CircleCalculator circleCalculator = new CircleCalculator();
 
 
