@@ -1,13 +1,13 @@
 package calculator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.security.PrivilegedAction;
+import java.util.*;
+import java.util.function.ToDoubleFunction;
+import java.util.stream.Collectors;
 
 public class ArithmeticCalculator<T> extends Calculator{
     private T num1;
     private T num2;
-
 
     private List<T> results;
 
@@ -104,4 +104,12 @@ public class ArithmeticCalculator<T> extends Calculator{
             results.remove(0);
         }
     }
+
+    public void bigNumPrint(int num) {
+        System.out.println("숫자를 입력하세요");
+        List<Integer>  max = (List<Integer>) results.stream().filter(v -> ((Number) v).intValue() > num).collect(Collectors.toList());;
+        max.forEach(System.out::println);
+    }
+
+
 }

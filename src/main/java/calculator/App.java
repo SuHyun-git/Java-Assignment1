@@ -15,8 +15,6 @@ public class App {
             int menu = scanner.nextInt();
             scanner.nextLine();
             if (menu == 1) {
-
-
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 int num1 = scanner.nextInt();
 
@@ -28,8 +26,6 @@ public class App {
                 char operator = scanner.next().charAt(0);
                 scanner.nextLine();
 
-                calculator.setNum1(num1);
-                calculator.setNum2(num2);
 
                 int result = calculator.calculate(num1, num2, operator);
                 // 오류가 나오면 -1을 반환한다. -> result에 -1이 들어오면 처음부터 입력을 다시 받는다.
@@ -43,6 +39,9 @@ public class App {
                 calculator.removeResult(calculator.getResults());
                 calculator.inquiryResults(calculator.getResults());
 
+                System.out.println("저장된 연산 결과들 중 더 큰 결과를 출력합니다.");
+                calculator.bigNumPrint(scanner.nextInt());
+                scanner.nextLine();
 
                 System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
                 if (scanner.nextLine().equals("exit")) {
